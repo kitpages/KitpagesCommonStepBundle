@@ -1,0 +1,31 @@
+{
+    "name": "kitpages/common-step-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle contains somme common processing that can be used as steps by the KitpagesChainBundle.",
+    "keywords": ["symfony2", "bundle", "workflow", "processing", "chain", "step"],
+    "homepage": "https://github.com/kitpages/KitpagesCommonStepBundle",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Philippe Le Van",
+            "homepage": "https://twitter.com/plv"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.1",
+        "symfony/console": ">=2.1",
+        "symfony/process": ">=2.1",
+        "kitpages/chain-bundle": "dev-master"
+    },
+    "require-dev": {
+        "symfony/class-loader": ">=2.1",
+        "symfony/yaml": ">=2.1",
+        "symfony/finder": ">=2.1",
+        "symfony/browser-kit": ">=2.1"
+    },
+    "autoload": {
+        "psr-0": { "Kitpages\\CommonStepBundle": "" }
+    },
+    "target-dir": "Kitpages/CommonStepBundle"
+}
