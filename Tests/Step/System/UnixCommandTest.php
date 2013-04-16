@@ -15,11 +15,13 @@ class UnixCommandTest extends \PHPUnit_Framework_TestCase
         touch($fileName);
 
         $event = $this->getMock('\Kitpages\ChainBundle\Step\StepEvent');
+        $logger = $this->getMock('\Symfony\Component\HttpKernel\Log\NullLogger');
 
         $step = new UnixCommand();
         $step->setParameter("chdir", $this->exampleDir);
         $step->setParameter("command", "ls {{fileName}} {{gloubi}}");
         $step->setParameter("fileName", "test.tmp");
+        $step->setService("logger", $logger);
         $return = $step->execute($event);
 
         $this->assertContains("test.tmp", $return);

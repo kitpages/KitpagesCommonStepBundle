@@ -20,24 +20,20 @@ class UnixCommand
 {
     public function execute(StepEvent $event = null)
     {
+        $logger = $this->getService("logger");
         // change to chdir
         $dir = $this->getParameter("chdir");
         if ($dir) {
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+                $logger->info("dir $dir created");
+            }
             chdir($dir);
         }
 
         // change params
-        $command = $this->getParameter("command");
-        preg_match_all('/{{([a-zA-Z0-9\.\-\_]+)}}/', $command, $matches);
-        $parameterList = $matches[1];
-        foreach ($parameterList as $parameterKey) {
-            $val = $this->getParameter($parameterKey);
-            if ($val) {
-                $command = str_replace('{{'.$parameterKey.'}}', escapeshellarg($val), $command);
-            } else {
-                $command = str_replace('{{'.$parameterKey.'}}', '', $command);
-            }
-        }
+        $command = $this->getRenderedParameter("command", function($str) {return escapeshellarg($str);} );
+        $logger->info("command=".$command);
 
         $process = new Process($command);
         $process->setTimeout(3600);

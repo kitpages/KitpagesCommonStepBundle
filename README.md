@@ -30,12 +30,14 @@ Now tell composer to download the bundle by running the command:
 $ php composer.phar update kitpages/common-step-bundle
 ```
 
-AppKernel.php
+in AppKernel.php, you have to add the KitpagesChainBundle and the KitpagesCommonStepBundle
 
 ``` php
 $bundles = array(
     ...
+    new Kitpages\ChainBundle\KitpagesChainBundle(),
     new Kitpages\CommonStepBundle\KitpagesCommonStepBundle(),
+    new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 );
 ```
 
