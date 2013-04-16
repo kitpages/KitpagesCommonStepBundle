@@ -16,6 +16,7 @@
         "symfony/framework-bundle": ">=2.1",
         "symfony/console": ">=2.1",
         "symfony/process": ">=2.1",
+        "symfony/swiftmailer-bundle": ">=2.1",
         "kitpages/chain-bundle": "dev-master"
     },
     "require-dev": {
