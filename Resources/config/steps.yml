@@ -1,0 +1,11 @@
+kitpages_chain:
+    shared_step_list:
+        common.unix:
+            class: '\Kitpages\CommonStepBundle\Step\System\UnixCommand'
+            service_list:
+                logger: logger
+
+        common.mkdir:
+            parent_shared_step: common.unix
+            parameter_list:
+                command: "mkdir -p {{dir}}"

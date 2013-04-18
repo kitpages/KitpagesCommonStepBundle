@@ -17,7 +17,8 @@
         "symfony/console": ">=2.1",
         "symfony/process": ">=2.1",
         "symfony/swiftmailer-bundle": ">=2.1",
-        "kitpages/chain-bundle": "dev-master"
+        "kitpages/chain-bundle": ">=v1.3",
+        "symfony/monolog-bundle": "*"
     },
     "require-dev": {
         "symfony/class-loader": ">=2.1",
