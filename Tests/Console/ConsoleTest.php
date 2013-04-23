@@ -14,7 +14,7 @@ class ConsoleTest extends CommandTestCase
             rmdir($testDir);
         }
         $this->assertTrue(!is_dir($testDir));
-        $output = $this->runCommand($client, "kitpages:chain:run-step common.mkdir --p=dir:".$testDir);
+        $output = $this->runCommand($client, "kitpages:chain:run-step common.unix.mkdir --p=dir:".$testDir);
         $this->assertTrue(is_dir($testDir));
 
     }

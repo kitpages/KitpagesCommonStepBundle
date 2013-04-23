@@ -41,7 +41,8 @@ class UnixCommand
         if (!$process->isSuccessful()) {
             throw new \RuntimeException($process->getErrorOutput());
         }
+        $event->set("process", $process);
 
-        return $process->getOutput();
+        return $process->getExitCode();
     }
 }

@@ -4,8 +4,36 @@ kitpages_chain:
             class: '\Kitpages\CommonStepBundle\Step\System\UnixCommand'
             service_list:
                 logger: logger
+            help:
+                short: run a unix command
+                complete: |
+                    @param string chdir : directory to go before running command
+                    @param string command : unix command to run
+                    @return integer : the exit code returned by the process
+                    @event->get("process") Symfony\Component\Process\Process : the symfony process that juste ran
+                    @service logger
+                    @see http://api.symfony.com/2.2/Symfony/Component/Process/Process.html
 
-        common.mkdir:
+        common.unix.mkdir:
             parent_shared_step: common.unix
             parameter_list:
                 command: "mkdir -p {{dir}}"
+            help:
+                short: created a directory
+                complete: |
+                    @param string dir : directory to create
+                    @return integer : the exit code returned by the unix mkdir command
+                    @event->get("process") Symfony\Component\Process\Process : the symfony process that juste ran
+                    @see http://api.symfony.com/2.2/Symfony/Component/Process/Process.html
+
+        common.unix.rm:
+            parent_shared_step: common.unix
+            parameter_list:
+                command: "rm {{file}}"
+            help:
+                short: delete a file
+                complete: |
+                    @param string file : file to delete
+                    @return integer : the exit code returned by the unix mkdir command
+                    @event->get("process") Symfony\Component\Process\Process : the symfony process that juste ran
+                    @see http://api.symfony.com/2.2/Symfony/Component/Process/Process.html
